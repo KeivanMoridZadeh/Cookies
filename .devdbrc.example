@@ -1,0 +1,8 @@
+[
+  {
+    "type": "sqlite",
+    "path": "database/database.sqlite"
+  }
+]
+
+
