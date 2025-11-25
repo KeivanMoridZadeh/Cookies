@@ -1,58 +1,62 @@
-# Cookie Shop - Laravel E-Commerce Project
+# 🍪 Cookie Shop - Laravel E-Commerce
 
-A modern cookie shop e-commerce application built with Laravel 12.
+A modern e-commerce application for a cookie shop built with Laravel 12.
 
-## Setup Complete ✅
-
-Your Laravel project is ready to go! Here's what's been configured:
-
-- ✅ Laravel 12.37.0 installed
-- ✅ Application key generated
-- ✅ Database (SQLite) configured and migrated
-- ✅ Dependencies installed via Composer
-
-## Getting Started
-
-### Start the Development Server
+## 🚀 Quick Start
 
 ```bash
+# Install dependencies
+composer install
+npm install
+
+# Setup environment
+cp .env.example .env
+php artisan key:generate
+
+# Run migrations
+php artisan migrate
+
+# Start server
 php artisan serve
 ```
 
-The application will be available at `http://localhost:8000`
+Visit `http://localhost:8000`
 
-### Install Frontend Dependencies (Optional)
+## ✨ Features
 
-If you plan to use Vite for frontend assets:
+- Product catalog (cookies, brownies, cakes)
+- Shopping cart functionality
+- User authentication with admin support
+- Product details with ingredients
+
+## 🛠️ Tech Stack
+
+- Laravel 12
+- PHP 8.2+
+- SQLite
+- Blade Templates
+
+## 📁 Project Structure
+
+- `app/Models/` - User & Product models
+- `app/Http/Controllers/` - Application controllers
+- `database/migrations/` - Database schema
+- `resources/views/` - Blade templates
+
+## 🗄️ Database
+
+- **Users**: Authentication with admin roles
+- **Products**: Name, type, price, ingredients (JSON)
+
+## 📝 Commands
 
 ```bash
-npm install
-npm run dev
+php artisan migrate          # Run migrations
+php artisan migrate:fresh    # Reset database
+php artisan db:seed          # Seed data
+php artisan route:list       # List routes
 ```
 
-### Available Commands
+---
 
-- `php artisan serve` - Start the development server
-- `php artisan migrate` - Run database migrations
-- `php artisan make:model ModelName` - Create a new model
-- `php artisan make:controller ControllerName` - Create a new controller
-- `php artisan make:migration create_table_name` - Create a new migration
-- `php artisan route:list` - List all routes
-
-## Project Structure
-
-- `app/` - Application logic (Models, Controllers, etc.)
-- `routes/` - Application routes
-- `resources/` - Views and frontend assets
-- `database/` - Migrations and seeders
-- `public/` - Publicly accessible files
-- `config/` - Configuration files
-
-## Next Steps
-
-1. Create your models (Cookie, Order, Cart, etc.)
-2. Set up your routes and controllers
-3. Design your views and frontend
-4. Configure your database schema
-
-Happy coding! 🍪
+Made with ❤️ using Laravel
