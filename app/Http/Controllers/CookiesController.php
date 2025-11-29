@@ -14,18 +14,7 @@ class CookiesController extends Controller
     public function create(){
         return view('create-cookie');
     }
-    // public function store(Request $request){
-    //     //validation
-    //     $request->validate([
-    //         'name'=> 'required|string|max:25',
-    //         'ingredients'=> 'required|array',
-    //         'price'=> 'required|numeric|min:0',
-    //         'type'=> 'required|string|in:cookies,brownies,cake',
-    //     ]);
-    //     //create the product
-    //     $product =Product::create($request->all());
-
-    // }
+   
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -53,6 +42,7 @@ class CookiesController extends Controller
             ->with('success', 'Cookie created successfully!');
     }
     public function show($id){
-        return view('cooky-details', ['id' => $id]);
+        $product = Product::with('user')->findOrFail($id);
+        return view('cooky-details', ['product' => $product]);
     }
 }

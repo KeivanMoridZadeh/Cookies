@@ -96,6 +96,21 @@ body {
 .nav-links {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    flex: 1;
+    margin-left: 2rem;
+}
+
+.nav-links-left {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-links-right {
+    display: flex;
+    align-items: center;
     gap: 2.5rem;
 }
 
@@ -979,6 +994,12 @@ body {
     }
     
     .nav-links {
+        gap: 1.5rem;
+        flex-direction: column;
+    }
+    
+    .nav-links-left,
+    .nav-links-right {
         gap: 1.5rem;
     }
     

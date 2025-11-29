@@ -23,4 +23,9 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function carts()
+{
+    return $this->belongsToMany(Cart::class, 'carts_product')
+    ->withPivot('quantity');
+}
 }

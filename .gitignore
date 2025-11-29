@@ -3,6 +3,7 @@
 .env
 .env.backup
 .env.production
+.env.local
 .devdbrc
 .phpactor.json
 .phpunit.result.cache
@@ -23,3 +24,13 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Additional security
+mcp.json
+*.pem
+*.key
+*.p12
+*.pfx
+/config/secrets.php
+/database/*.sqlite
+/database/*.db
