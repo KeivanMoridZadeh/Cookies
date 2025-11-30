@@ -28,6 +28,7 @@ class CartFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Cart $cart) {
+            
             $numberOfProducts = rand(3, 5);
 
             $productIds = Product::inRandomOrder()

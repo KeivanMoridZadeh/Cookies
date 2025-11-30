@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\cookies;
 class CookiesController extends Controller
 {
     public function index()
@@ -29,14 +32,21 @@ class CookiesController extends Controller
             array_map('trim', preg_split('/[,\n]+/', $validated['ingredients']))
         );
 
-        Product::create([
+        $user = Auth::user();
+        
+        
+
+        $product = Product::create([
             'name'        => $validated['name'],
             'type'        => $validated['type'],
             'price'       => $validated['price'],
             'ingredients' => $ingredientsArray,
-            'user_id'     => 1, // using fixed user ID for now
+            'user_id'     => $user->id,
         ]);
 
+        Mail::to($user->email)->send(
+            new cookies($product)
+        );
         return redirect()
             ->route('cookies')
             ->with('success', 'Cookie created successfully!');

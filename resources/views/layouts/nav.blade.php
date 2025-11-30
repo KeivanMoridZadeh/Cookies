@@ -17,14 +17,14 @@
             </div>
             <div class="nav-links-right">
                 @guest
-                    <a href="{{ route('login') }}" class="nav-link">login</a>
-                    <a href="{{ route('register') }}" class="nav-link">register</a>
+                    <a href="{{ route('login') }}" class="nav-link">Login</a>
+                    <a href="{{ route('register') }}" class="nav-link">Register</a>
                 @endguest
 
                 @auth
                     <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                         @csrf
-                        <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; cursor: pointer; font: inherit; color: inherit;">logout</button>
+                        <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; cursor: pointer; font: inherit; color: inherit;">Logout</button>
                     </form>
                 @endauth
                 
