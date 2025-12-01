@@ -22,9 +22,9 @@
                 @endguest
 
                 @auth
-                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                    <form method="POST" action="{{ route('logout') }}" class="nav-form">
                         @csrf
-                        <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; cursor: pointer; font: inherit; color: inherit;">Logout</button>
+                        <button type="submit" class="nav-link nav-button">Logout</button>
                     </form>
                 @endauth
                 

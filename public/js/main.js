@@ -108,6 +108,29 @@ class Cart {
 // Initialize cart
 const cart = new Cart();
 
+// Quantity Selector Functions (for product detail page)
+function increaseQuantity(button) {
+    const container = button.closest('.quantity-selector');
+    const input = container.querySelector('.quantity-input');
+    let value = parseInt(input.value) || 1;
+    const max = parseInt(input.getAttribute('max')) || 99;
+    if (value < max) {
+        value++;
+        input.value = value;
+    }
+}
+
+function decreaseQuantity(button) {
+    const container = button.closest('.quantity-selector');
+    const input = container.querySelector('.quantity-input');
+    let value = parseInt(input.value) || 1;
+    const min = parseInt(input.getAttribute('min')) || 1;
+    if (value > min) {
+        value--;
+        input.value = value;
+    }
+}
+
 // Quantity Selector
 class QuantitySelector {
     constructor(container, initialValue = 1, min = 1, max = 99) {
@@ -123,10 +146,16 @@ class QuantitySelector {
         const increaseBtn = this.container.querySelector('.quantity-increase');
         const input = this.container.querySelector('.quantity-input');
 
-        decreaseBtn.addEventListener('click', () => this.decrease());
-        increaseBtn.addEventListener('click', () => this.increase());
-        input.addEventListener('change', (e) => this.setValue(parseInt(e.target.value)));
-        input.addEventListener('blur', () => this.validate());
+        if (decreaseBtn && !decreaseBtn.onclick) {
+            decreaseBtn.addEventListener('click', () => this.decrease());
+        }
+        if (increaseBtn && !increaseBtn.onclick) {
+            increaseBtn.addEventListener('click', () => this.increase());
+        }
+        if (input) {
+            input.addEventListener('change', (e) => this.setValue(parseInt(e.target.value)));
+            input.addEventListener('blur', () => this.validate());
+        }
     }
 
     decrease() {

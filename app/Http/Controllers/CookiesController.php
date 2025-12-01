@@ -44,7 +44,7 @@ class CookiesController extends Controller
             'user_id'     => $user->id,
         ]);
 
-        Mail::to($user->email)->send(
+        Mail::to($user->email)->queue(
             new cookies($product)
         );
         return redirect()

@@ -245,20 +245,7 @@
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="section" style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.08) 0%, rgba(255, 217, 61, 0.08) 100%);">
-        <div class="container" style="max-width: 700px;">
-            <div style="text-align: center; background: var(--bg-white); padding: 3rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); border: 1px solid var(--border);">
-                <h2 style="font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Stay in the Loop</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">Subscribe to get special offers, new flavor announcements, and cookie tips delivered to your inbox!</p>
-                <form style="display: flex; gap: 1rem; max-width: 500px; margin: 0 auto;">
-                    <input type="email" placeholder="Enter your email" style="flex: 1; padding: 1rem 1.25rem; border: 2px solid var(--border); border-radius: var(--radius-md); font-size: 1rem; transition: all 0.3s ease;" class="form-input">
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-                <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 1rem;">We respect your privacy. Unsubscribe at any time.</p>
-            </div>
-        </div>
-    </section>
+   
 
     <!-- CTA Section -->
     <section class="section" style="background: linear-gradient(135deg, #FF6B6B 0%, #FF8787 50%, #FFD93D 100%); background-size: 200% 200%; animation: gradientShift 8s ease infinite; color: white; position: relative; overflow: hidden;">

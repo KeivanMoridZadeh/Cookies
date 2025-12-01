@@ -1,54 +1,80 @@
 @extends('layouts.app')
 @section('content')
     <!-- Product Detail Section -->
-    <section class="section">
+    <section class="product-detail-section">
         <div class="container">
-            
-            <form method="POST" action="{{ route('cart.update', $product->id) }}">
+            <form method="POST" action="{{ route('cart.store', $product->id) }}">
                 @csrf
-                <div class="product-detail">
-                    <div class="product-image-large" style="background: linear-gradient(135deg, #FFE5E5 0%, #FFD6D6 100%);">
-                        <svg class="card-placeholder" style="width: 200px; height: 200px;" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
-                        </svg>
+                <div class="product-detail-modern">
+                    <div class="product-image-modern">
+                        <div class="image-container">
+                            <svg class="product-icon" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                            </svg>
+                            <div class="image-overlay"></div>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <h1>{{ $product->name }}</h1>
-                        <div class="product-price">${{ $product->price }}</div>
-                        <p class="product-description">
-                            Our classic chocolate chip cookies are made with the finest ingredients. Each cookie is handcrafted with premium Belgian chocolate chips, real butter, and a touch of vanilla. These cookies are soft on the inside with a slightly crisp edge - the perfect texture that will melt in your mouth. Baked fresh daily, these cookies are a timeless favorite that never goes out of style.
-                        </p>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn quantity-decrease" name="quantity">-</button>
-                            
-                            <input type="number" class="quantity-input" value="{{ $product->pivot->quantity }}" min="1" max="99">
-                            <button class="quantity-btn quantity-increase">+</button>
+                    <div class="product-info-modern">
+                        <div class="product-header">
+                            <h1 class="product-title">{{ $product->name }}</h1>
+                            <div class="product-price-modern">
+                                <span class="price-currency">$</span>
+                                <span class="price-amount">{{ number_format($product->price, 2) }}</span>
+                            </div>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary add-to-cart-btn" 
-                                style="width: 100%; padding: 1rem; font-size: 1.2rem;">
-                            Add to Cart
-                    </button>
+                        @if($product->ingredients && count($product->ingredients) > 0)
+                            <div class="ingredients-modern">
+                                <h3 class="ingredients-title">
+                                    <span class="title-icon">✨</span>
+                                    Ingredients
+                                </h3>
+                                <div class="ingredients-grid">
+                                    @foreach($product->ingredients as $ingredient)
+                                        <span class="ingredient-badge">{{ $ingredient }}</span>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
                         
+                        <div class="quantity-modern">
+                            <label class="quantity-label">Select Quantity</label>
+                            <div class="quantity-controls">
+                                <button type="button" class="quantity-btn-modern quantity-decrease" onclick="decreaseQuantity(this)">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M5 10h10"/>
+                                    </svg>
+                                </button>
+                                <input type="number" name="quantity" class="quantity-input-modern" value="1" min="1" max="99" required>
+                                <button type="button" class="quantity-btn-modern quantity-increase" onclick="increaseQuantity(this)">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M10 5v10M5 10h10"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            @auth
+                                <button type="submit" class="btn-add-cart">
+                                    <span class="btn-icon">🛒</span>
+                                    <span>Add to Cart</span>
+                                </button>
+                            @endauth
+                            @guest
+                                <a href="{{ route('login') }}" class="btn-add-cart btn-login">
+                                    
+                                    <span>Login to Add to Cart</span>
+                                </a>
+                            @endguest
+                        </div>
                     </div>
                 </div>
             </form>
-            
         </div>
     </section>
-
 @endsection
 
 
 
 
-{{-- <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
-                            <h3 style="margin-bottom: 1rem; color: #92400e;">Product Details</h3>
-                            <ul style="list-style: none; color: #6b7280; line-height: 2;">
-                                <li>✓ Made with premium ingredients</li>
-                                <li>✓ Baked fresh daily</li>
-                                <li>✓ Contains 12 cookies per box</li>
-                                <li>✓ Suitable for vegetarians</li>
-                                <li>✓ Free shipping on orders over $50</li>
-                            </ul>
-                        </div> --}}
