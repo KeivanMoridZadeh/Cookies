@@ -9,7 +9,7 @@
         </a>
         <div class="nav-links">
             <div class="nav-links-left">
-                <a href="{{ route('home') }}" class="nav-link">Home</a>
+                {{-- <a href="{{ route('home') }}" class="nav-link">Home</a> --}}
                 <a href="{{ route('cookies') }}" class="nav-link">Cookies</a>
                 @auth
                     <a href="{{ route('cookies.create') }}" class="nav-link">Create Cookie</a>
